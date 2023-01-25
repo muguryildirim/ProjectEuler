@@ -1,0 +1,20 @@
+class Solution {
+    public boolean isHappy(int n) {
+        int fal = n;
+        int tr = getSquareDigitSum(n);
+        while(tr != 1 && fal != tr){
+            fal = getSquareDigitSum(fal);
+            tr = getSquareDigitSum(getSquareDigitSum(tr));
+        }
+        return tr == 1;
+    }
+    private int getSquareDigitSum(int n){
+        int squareDigitSum = 0;
+        while(n > 0){
+            int digit = n % 10;
+            squareDigitSum += digit * digit;
+            n /= 10;
+        }
+        return squareDigitSum;
+    }
+}

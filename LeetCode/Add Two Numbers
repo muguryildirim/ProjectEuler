@@ -1,0 +1,33 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode fDummy = new ListNode(0); // Creating a Dummy List
+        ListNode current = fDummy; // init a pointer
+        int carry = 0; 
+        // while loop will run, until l1 OR l2 not reaches null OR if they both reaches null, but carry has some value in it. 
+		    // Add that as well into our list
+        while(l1 != null || l2 != null || carry!= 0)
+        {
+            int x = (l1 != null)?l1.val:0;
+            int y = (l2 != null)?l2.val:0;
+            int sum = carry + x + y; // adding carry into sum
+            carry = sum / 10; //If get carry, then divide it by 10 to get the carry
+            current.next = new ListNode(sum % 10); 
+            current = current.next;
+            if(l1 != null)
+               l1 = l1.next;
+            if(l2 != null)
+               l2 = l2.next;
+        } 
+        return fDummy.next; // Don't want the value we have consider in it intially!!
+    }
+}

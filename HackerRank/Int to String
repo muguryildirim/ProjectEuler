@@ -1,0 +1,15 @@
+import java.util.*;
+
+public class Solution 
+{
+      public static void main(String[] args)
+      {
+            String s = "";
+            
+           
+           if(n >= -100 && n <= 100)
+           {
+                s = String.valueOf(n);
+           }
+      }
+}
